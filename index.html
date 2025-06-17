@@ -2,46 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Asia, You're Invited!</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Quicksand&display=swap" rel="stylesheet">
   <style>
-    body {
+    html, body {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
       font-family: 'Quicksand', sans-serif;
       background: #fffaf5;
       color: #333;
-      padding: 2rem;
-      text-align: center;
       overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+    }
+    body {
+      padding: 1rem;
+      box-sizing: border-box;
     }
     h1, h2 {
       font-family: 'Playfair Display', serif;
     }
     .balloons {
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: #d62828;
     }
     img {
-      width: 200px;
+      width: 80%;
+      max-width: 300px;
       border-radius: 1rem;
       margin: 1rem auto;
+      display: block;
     }
     .info {
       margin: 1rem 0;
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
     .form-section {
       background: #fce4ec;
       padding: 1rem;
       margin-top: 2rem;
       border-radius: 1rem;
-      display: inline-block;
       text-align: left;
     }
     label, select, input[type="text"] {
       display: block;
       margin-bottom: 0.75rem;
       font-size: 1rem;
+      width: 100%;
     }
     input[type="checkbox"] {
       margin-right: 0.5rem;
@@ -54,15 +63,15 @@
       border-radius: 1rem;
       font-size: 1rem;
       cursor: pointer;
+      width: 100%;
     }
     .mystery-note {
       background: #fff0f5;
       border-left: 4px solid #ff69b4;
       padding: 1rem;
       margin: 2rem auto;
-      max-width: 600px;
       font-style: italic;
-      font-size: 1.05rem;
+      font-size: 1rem;
       border-radius: 1rem;
     }
     .confetti {
@@ -78,9 +87,14 @@
       color: #008c45;
       font-weight: bold;
     }
-    .italian-section {
-      margin-top: 1rem;
-      font-style: italic;
+    @media (max-width: 600px) {
+      .info {
+        font-size: 0.95rem;
+      }
+      .submit-button {
+        font-size: 1rem;
+        padding: 0.8rem;
+      }
     }
   </style>
 </head>
@@ -111,10 +125,7 @@
 
   <div class="form-section">
     <h2>RSVP <span class="italian-flair">(Conferma)</span></h2>
-    <form id="rsvp-form">
-      <label for="phone">Phone Number:</label>
-      <input type="text" id="phone" name="phone" value="+1 (406) 970-9044">
-
+    <form action="mailto:addison.boyer@mso.umt.edu" method="POST" enctype="text/plain">
       <label>
         <input type="checkbox" name="can_make_it"> I can make it
       </label>
@@ -137,11 +148,6 @@
   </div>
 
   <script>
-    document.getElementById('rsvp-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      alert(`Asia, grazie per la tua conferma! Addison says: \"I'm just a boy, standing in front of a girl, asking her to come to a cat's birthday party.\" 🎂😸`);
-    });
-
     // Animated confetti 🎉
     const confettiCanvas = document.querySelector('.confetti');
     const ctx = confettiCanvas.getContext('2d');
